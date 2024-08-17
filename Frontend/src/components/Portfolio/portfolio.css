@@ -1,0 +1,71 @@
+.portfolio-header{
+    border-radius: 100px;
+    padding: 15px;
+    border: solid rgba(255, 255, 255, 0.2) 1px;
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.portfolio-header p{
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+}
+
+.portfolio-header form{
+    height: 35px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 500px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-right: 3px;
+}
+
+.portfolio-header form input{
+    background-color: transparent;
+    flex: 1;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+}
+
+.portfolio-header form button{
+    border: none;
+    background: orange;
+    color: white;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 500px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 550px) {
+    .portfolio-header{
+        background-color: rgba(255, 255, 255, 0.04);
+        border-radius: 10px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 15px;
+    }
+    
+    .portfolio-header p{
+        color: rgba(255, 255, 255, 0.9);
+        font-style: italic;
+        margin-bottom: 15px;
+    }
+
+    .portfolio-header form{
+        position: static;
+    }
+}

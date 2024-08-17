@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.navbar-container {
+	box-sizing: border-box;
+	width: 100%;
+	position: fixed;
+	background-color: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(10px);
+	height: 60px;
+	display: flex;
+	align-items: center;
+	padding: 8px;
+	top: 0;
+	left: 0;
+	justify-content: space-between;
+}
+
+.navbar-container-symbol{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.navbar-heading-logo img {
+	height: 40px;
+	margin-left: 20px;
+}
+
+.navbar-heading-text {
+	color: rgb(255, 166, 0);
+	font-family: "Montserrat", sans-serif;
+	letter-spacing: 5px;
+	font-weight: 800;
+	text-shadow: 0 0 6px orange;
+}
+
+body {
+	font-size: 16px;
+	margin: 20px;
+}
+
+.navbar-right{
+	cursor: pointer;
+	margin-right: 15px;
+	display: flex;
+	align-items: center;
+	gap: max(1vw, 12px);
+	color: white;
+}
+
+.navbar-right select{
+	padding: 5px 8px;
+	border-radius: 5px;
+	border: none;
+	background: transparent;
+	color: white;
+	border: none;
+}
+
+.navbar-right option{
+	background-color: rgb(0, 0, 0);
+	color: white;
+	border: none;
+}
+
+@media only screen and (max-width: 550px) {
+	.navbar-container {
+		background-color: transparent;
+		border-bottom: 1px rgba(255, 255, 255, 0.327) solid;
+	}
+
+	.navbar-heading-logo img {
+		height: 40px;
+		margin-top: 8px;
+		margin-left: 8px;
+	}
+
+	.navbar-heading-text {
+		font-size: 14px;
+		position: absolute;
+		left: 15%;
+		top: 40%;
+	}
+
+	.navbar-right{
+		position: absolute;
+		top: 34%;
+		right: 0%;
+	}
+}
