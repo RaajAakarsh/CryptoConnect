@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+// const DB_URL = require("../config");
 
 mongoose
 	.connect(
-		process.env.DB_URL
+		"mongodb+srv://aak07:!QZd2Ce4_Ya5Aap@cryptoconnect.mdwg0.mongodb.net/"
 	)
 	.then(() => console.log("Connected to MongoDB"))
 	.catch((err) => console.error("Error connecting to MongoDB:", err));

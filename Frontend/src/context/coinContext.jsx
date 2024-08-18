@@ -13,7 +13,6 @@ const CoinContextProvider = (props) => {
     const fetchAllCoin = async() =>{
         const options = {
             method: 'GET',
-            // headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-jm4HdEjN3DSpc1wCNfBZTRMb'}
             headers: {accept: 'application/json', 'x-cg-demo-api-key': COINGECKO_API_KEY}
           };
           

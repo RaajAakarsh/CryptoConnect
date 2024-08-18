@@ -1,10 +1,20 @@
 import "./navbar.css";
 import navbar_logo from "../../assets/navbar-logo.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CoinContext } from "../../context/coinContext";
+import { AuthContext } from "../../context/authContext";
 
 const Navbar = () => {
 	const { setCurrency } = useContext(CoinContext);
+	const { showSignup, setShowSignup, showSignin, setShowSignin } = useContext(AuthContext);
+
+	const handleAuthForm = () => {
+		setShowSignup(!showSignup);
+	}
+
+	const handleAuthFormSignIn = () => {
+		setShowSignin(!showSignin);
+	}
 
 	const currencyHandler = (event) => {
 		switch (event.target.value) {
@@ -70,9 +80,9 @@ const Navbar = () => {
 						<option value="xau">XAU</option>
 						<option value="xag">XAG</option>
 						<option value="try">TRY</option>
-						<option value="aed">AED</option>
+						<option value="aed">AED</option> 
 					</select>
-					<button>SignUp</button>
+					{!showSignin ? <button onClick={handleAuthForm}>SignUp</button> : <button onClick={handleAuthFormSignIn}>SignIn</button>}
 				</div>
 			</div>
 		</>

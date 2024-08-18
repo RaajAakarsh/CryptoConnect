@@ -39,8 +39,8 @@
 }
 
 .portfolio-header form button{
-    border: none;
-    background: orange;
+    background: black;
+    border: solid 2px orange;
     color: white;
     font-size: 16px;
     padding: 5px 10px;

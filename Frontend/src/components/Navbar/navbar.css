@@ -67,7 +67,12 @@ body {
 	padding: 8px;
 	background: black;
 	border: orange solid 2px;
-	
+	border-radius: 100px;
+	cursor: pointer;
+	transition: box-shadow 0.2s;
+}
+.navbar-right button:hover{
+	box-shadow: 0 0 10px orange;
 }
 
 @media only screen and (max-width: 650px) {
@@ -91,8 +96,9 @@ body {
 	}
 
 	.navbar-right{
+		display: flex;
 		position: absolute;
-		top: 34%;
+		top: 23%;
 		right: 0%;
 	}
 }
