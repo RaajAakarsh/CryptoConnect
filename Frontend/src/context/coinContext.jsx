@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import COINGECKO_API_KEY from "../../config"
 
 export const CoinContext = createContext();
 
@@ -12,7 +13,8 @@ const CoinContextProvider = (props) => {
     const fetchAllCoin = async() =>{
         const options = {
             method: 'GET',
-            headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-jm4HdEjN3DSpc1wCNfBZTRMb'}
+            // headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-jm4HdEjN3DSpc1wCNfBZTRMb'}
+            headers: {accept: 'application/json', 'x-cg-demo-api-key': COINGECKO_API_KEY}
           };
           
           fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.name}`, options)

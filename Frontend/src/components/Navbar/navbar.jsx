@@ -72,6 +72,7 @@ const Navbar = () => {
 						<option value="try">TRY</option>
 						<option value="aed">AED</option>
 					</select>
+					<button>SignUp</button>
 				</div>
 			</div>
 		</>
