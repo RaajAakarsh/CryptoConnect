@@ -53,13 +53,13 @@ Open your web browser and navigate to http://localhost:3000 to access the fronte
 
 - This project uses a .env file to store environment variables. Make sure to add the .env file to your .gitignore file to avoid committing sensitive information to your repository.
 
-![Landing Page](./1.png)
+![Landing Page](./images/1.png)
 Landing Page
-![Search functionality](./2.png)
+![Search functionality](./images/2.png)
 Search functionality
-![Sign up](./3.png)
+![Sign up](./images/3.png)
 Sign up
-![Sign in](./4.png)
+![Sign in](./images/4.png)
 Sign in
-![Add coins to watchlist](./5.png)
+![Add coins to watchlist](./images/5.png)
 Add coins to watchlist
