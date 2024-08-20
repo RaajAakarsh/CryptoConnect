@@ -66,3 +66,4 @@ Add coins to watchlist
 
 ## Visit the site at
 https://crypto-connect-client.vercel.app/
+For best experience please use Google Chrome!
