@@ -75,10 +75,6 @@ const CoinContextProvider = (props) => {
 		getWatchlistCoins();
 	}, [token, track]);
 
-	setInterval(() => {
-	    fetchAllCoin();
-	}, 5000);
-
 	const contextValue = {
 		allCoin,
 		currency,
