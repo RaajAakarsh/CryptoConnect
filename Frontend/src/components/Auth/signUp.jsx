@@ -21,7 +21,10 @@ const SignUp = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		if (password !== recheckPassword) {
+		if (password.length < 8 || recheckPassword.length < 8) {
+			setPasswordError(true);
+			setErrorMsg("Password must be atleast 8 characters");
+		}else if (password !== recheckPassword) {
 			setPasswordError(true);
 			setErrorMsg("Passwords Do Not Match");
 		} else {

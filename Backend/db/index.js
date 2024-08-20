@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+const DB_URL = import.meta.env.DB_URL;
 
 mongoose
 	.connect(
-		"mongodb+srv://aak07:!QZd2Ce4_Ya5Aap@cryptoconnect.mdwg0.mongodb.net/"
+		DB_URL
 	)
 	.then(() => console.log("Connected to MongoDB"))
 	.catch((err) => console.error("Error connecting to MongoDB:", err));
