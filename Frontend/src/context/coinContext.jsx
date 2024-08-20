@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import COINGECKO_API_KEY from "../../config";
+import CONNECTION_URL from "../../config";
 import { AuthContext } from "./authContext";
 
 export const CoinContext = createContext();
@@ -36,7 +37,7 @@ const CoinContextProvider = (props) => {
 		setToken(localStorage.getItem("token"));
 
 		if (token) {
-			const url = "http://localhost:3000/api/v1/watchlist/";
+			const url = "https://crypto-connect-api.vercel.app/api/v1/watchlist/";
 			const headers = {
 				Authorization: `Bearer ${token}`,
 				"Content-Type": "application/json",

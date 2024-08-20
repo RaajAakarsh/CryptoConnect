@@ -15,7 +15,7 @@ const CryptoTable = ({ displayCoin }) => {
 		setToken(localStorage.getItem("token"));
 
 		if (token && coinId) {
-			const url = "http://localhost:3000/api/v1/watchlist/starred";
+			const url = "https://crypto-connect-api.vercel.app/api/v1/watchlist/starred";
 			const headers = {
 				Authorization: `Bearer ${token}`,
 				"Content-Type": "application/json",
@@ -74,7 +74,7 @@ const CryptoTable = ({ displayCoin }) => {
 						<p id="table-col-6">24h - low</p>
 						<p id="table-col-7">Market Cap</p>
 					</div>
-					{displayCoin &&
+					{displayCoin ? (
 						displayCoin.slice(0, 10).map((item, index) => (
 							<div
 								className="crypto-table-layout"
@@ -127,7 +127,10 @@ const CryptoTable = ({ displayCoin }) => {
 									{currency.symbol} {item.market_cap.toLocaleString()}
 								</p>
 							</div>
-						))}
+						))
+					) : (
+						<></>
+					)}
 				</div>
 			</div>
 		</>
