@@ -7,6 +7,7 @@ const coinApiKey = import.meta.env.COIN_API_KEY;
 
 const CoinContextProvider = (props) => {
 	const { token, setToken } = useContext(AuthContext);
+	const [track2, setTrack2] = useState(1);
     const [track, setTrack] = useState(1);
 	const [allCoin, setAllCoin] = useState([]);
 	const [watchList, setWatchList] = useState([]);
@@ -68,11 +69,15 @@ const CoinContextProvider = (props) => {
 
 	useEffect(()=>{
 	    fetchAllCoin();
-	},[currency])
+	},[currency, track2])
 
 	useEffect(() => {
 		getWatchlistCoins();
 	}, [token, track]);
+
+	setInterval(() => {
+	    fetchAllCoin();
+	}, 5000);
 
 	const contextValue = {
 		allCoin,
