@@ -73,19 +73,18 @@
 	}
 	.crypto-table-container {
 		overflow-x: scroll;
-		max-width: 550px;
+		max-width: 1000px;
 		height: auto;
-		width: 550px;
+		width: 1000px;
 	}
 	.crypto-table-layout {
 		font-size: 15px;
 		display: grid;
-		grid-template-columns: 0.5fr 2fr 1.5fr 1fr 2fr;
 	}
-    .crypto-table-layout #table-col-5,
+    /* .crypto-table-layout #table-col-5,
     .crypto-table-layout #table-col-6
      {
-		opacity: 0;
+		display: none;
         position: absolute;
-	}
+	} */
 }

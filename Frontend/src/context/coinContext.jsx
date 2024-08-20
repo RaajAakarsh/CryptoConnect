@@ -6,6 +6,7 @@ export const CoinContext = createContext();
 
 const CoinContextProvider = (props) => {
 	const { token, setToken } = useContext(AuthContext);
+    const [track, setTrack] = useState(1);
 	const [allCoin, setAllCoin] = useState([]);
 	const [watchList, setWatchList] = useState([]);
 	const [currency, setCurrency] = useState({
@@ -70,13 +71,15 @@ const CoinContextProvider = (props) => {
 
 	useEffect(() => {
 		getWatchlistCoins();
-	}, [token]);
+	}, [token, track]);
 
 	const contextValue = {
 		allCoin,
 		currency,
 		setCurrency,
-        watchList
+        watchList,
+        track,
+        setTrack
 	};
 
 	return (

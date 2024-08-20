@@ -9,6 +9,8 @@ import { AuthContext } from "../context/authContext";
 
 const AppRouter = () => {
 	const { showSignup, showSignin } = useContext(AuthContext);
+	console.log("Developed by Aakarsh Raaj - 22CE10001");
+
 
 	return (
 		<React.StrictMode>

@@ -7,7 +7,8 @@ import starred from "../../assets/starred.png";
 import not_starred from "../../assets/not_starred.png";
 
 const CryptoTable = ({ displayCoin }) => {
-	const { allCoin, currency, watchList } = useContext(CoinContext);
+	const { allCoin, currency, track, setTrack, watchList } =
+		useContext(CoinContext);
 	const { isAuthenticated, token, setToken } = useContext(AuthContext);
 
 	const handleStarred = (coinId) => {
@@ -33,7 +34,8 @@ const CryptoTable = ({ displayCoin }) => {
 					}
 				})
 				.then((updatedUser) => {
-					console.log(updatedUser);
+					// console.log(updatedUser);
+					setTrack(track + 1);
 				})
 				.catch((error) => {
 					console.error("Error updating watched coins:", error);
@@ -72,54 +74,60 @@ const CryptoTable = ({ displayCoin }) => {
 						<p id="table-col-6">24h - low</p>
 						<p id="table-col-7">Market Cap</p>
 					</div>
-					{displayCoin.slice(0, 10).map((item, index) => (
-						<div
-							className="crypto-table-layout"
-							key={index}
-							style={
-								isAuthenticated
-									? {
-											gridTemplateColumns:
-												"0.5fr 0.5fr 2fr 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr",
-									  }
-									: {
-											gridTemplateColumns:
-												"0.5fr 2fr 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr",
-									  }
-							}
-						>
-							<p id="table-col-1">{item.market_cap_rank}</p>
-							{isAuthenticated && (
-								<p id="table-col-8">
-									<button onClick={() => handleStarred(item.id)}>
-										<img src={watchList.includes(item.id) ? starred : not_starred} alt="" />
-									</button>
-								</p>
-							)}
-							<div>
-								<img src={item.image} alt="" />
-								<p>{item.name + "  " + item.symbol.toUpperCase()}</p>
-							</div>
-							<p id="table-col-3">
-								{currency.symbol} {item.current_price.toLocaleString()}
-							</p>
-							<p
-								id="table-col-4"
-								className={
-									item.price_change_percentage_24h > 0
-										? "crypto-table-layout-green"
-										: "crypto-table-layout-red"
+					{displayCoin &&
+						displayCoin.slice(0, 10).map((item, index) => (
+							<div
+								className="crypto-table-layout"
+								key={index}
+								style={
+									isAuthenticated
+										? {
+												gridTemplateColumns:
+													"0.5fr 0.5fr 2fr 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr",
+										  }
+										: {
+												gridTemplateColumns:
+													"0.5fr 2fr 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr",
+										  }
 								}
 							>
-								{Math.floor(item.price_change_percentage_24h * 100) / 100}
-							</p>
-							<p id="table-col-5">{item.high_24h}</p>
-							<p id="table-col-6">{item.low_24h}</p>
-							<p id="table-col-7">
-								{currency.symbol} {item.market_cap.toLocaleString()}
-							</p>
-						</div>
-					))}
+								<p id="table-col-1">{item.market_cap_rank}</p>
+								{isAuthenticated && (
+									<p id="table-col-8">
+										<button onClick={() => handleStarred(item.id)}>
+											<img
+												src={
+													watchList.includes(item.id) ? starred : not_starred
+												}
+												alt=""
+											/>
+										</button>
+									</p>
+								)}
+								<div>
+									<img src={item.image} alt="" />
+									<p>{item.name + "  " + item.symbol.toUpperCase()}</p>
+								</div>
+								<p id="table-col-3">
+									{currency.symbol} {item.current_price.toLocaleString()}
+								</p>
+								<p
+									id="table-col-4"
+									className={
+										item.price_change_percentage_24h > 0
+											? "crypto-table-layout-green"
+											: "crypto-table-layout-red"
+									}
+								>
+									{Math.floor(item.price_change_percentage_24h * 100) / 100}
+								</p>
+								<p id="table-col-5">{item.high_24h}</p>
+								<p id="table-col-6">{item.low_24h}</p>
+								<p id="table-col-7">
+									{currency.symbol} {item.market_cap.toLocaleString()}
+								</p>
+							</div>
+						))}
 				</div>
 			</div>
 		</>
