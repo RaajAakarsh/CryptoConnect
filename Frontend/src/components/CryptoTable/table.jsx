@@ -74,7 +74,7 @@ const CryptoTable = ({ displayCoin }) => {
 						<p id="table-col-6">24h - low</p>
 						<p id="table-col-7">Market Cap</p>
 					</div>
-					{displayCoin ? (
+					{Array.isArray(displayCoin) ? (
 						displayCoin.slice(0, 10).map((item, index) => (
 							<div
 								className="crypto-table-layout"
