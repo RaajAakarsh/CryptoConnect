@@ -20,11 +20,6 @@
 // // 		console.error("Error starting server:", err);
 // // 	});
 
-// module.exports = async (req, res) => {
-// 	return app(req, res);
-// };
-
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -33,11 +28,16 @@ const watchlistRouter = require("./routes/watchlist");
 
 const app = express();
 
+app.options("*", cors());
 app.use(cors());
 app.use(bodyParser.json());
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/watchlist", watchlistRouter);
 
+app.get("/", (req, res) => {
+	res.json("Hello");
+});
+
 module.exports = async (req, res) => {
-  return await app(req, res);
+	return await app(req, res);
 };
