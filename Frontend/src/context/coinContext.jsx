@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import COINGECKO_API_KEY from "../../config";
-import CONNECTION_URL from "../../config";
 import { AuthContext } from "./authContext";
 
 export const CoinContext = createContext();
+const coinApiKey = import.meta.env.COIN_API_KEY;
+
 
 const CoinContextProvider = (props) => {
 	const { token, setToken } = useContext(AuthContext);
@@ -20,7 +20,7 @@ const CoinContextProvider = (props) => {
 			method: "GET",
 			headers: {
 				accept: "application/json",
-				"x-cg-demo-api-key": COINGECKO_API_KEY,
+				"x-cg-demo-api-key": coinApiKey,
 			},
 		};
 
