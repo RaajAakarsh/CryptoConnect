@@ -8,7 +8,7 @@
 
 .crypto-table-layout {
 	display: grid;
-	grid-template-columns: 0.5fr 2fr 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr;
+	/* grid-template-columns: 0.5fr 0.5fr 2fr 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr; */
 	padding: 15px 20px;
 	font-weight: 600;
 	align-items: center;
@@ -55,6 +55,16 @@
 .crypto-table-layout #table-col-7 {
 	text-align: end;
 	margin-right: 0px;
+}
+
+.crypto-table-layout #table-col-8 button{
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.crypto-table-layout #table-col-8 img{
+	height:25px;
 }
 
 @media only screen and (max-width: 800px) {

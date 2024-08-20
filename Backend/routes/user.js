@@ -18,8 +18,12 @@ const signin_schema = zod.object({
 	password: zod.string().min(8),
 });
 
+const watchlist_schema = zod.object({
+	coinId: zod.string(),
+});
+
 router.post("/signup", async (req, res) => {
-    console.log("signup detected");
+	console.log("signup detected");
 	const request = req.body;
 	const result = signup_schema.safeParse(request);
 
@@ -50,14 +54,12 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/signin", async (req, res) => {
-    console.log("signin detected");
+	console.log("signin detected");
 	const request = req.body;
 	const result = signin_schema.safeParse(request);
 
 	if (!result.success) {
-		res
-			.status(400)
-			.json({ message: "Invalid request", errors: result});
+		res.status(400).json({ message: "Invalid request", errors: result });
 	} else {
 		try {
 			const user = await User.findOne({ email: result.data.email });

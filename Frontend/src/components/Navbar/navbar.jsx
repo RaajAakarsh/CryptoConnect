@@ -6,15 +6,35 @@ import { AuthContext } from "../../context/authContext";
 
 const Navbar = () => {
 	const { setCurrency } = useContext(CoinContext);
-	const { showSignup, setShowSignup, showSignin, setShowSignin } = useContext(AuthContext);
+	const {
+		showSignup,
+		setShowSignup,
+		showSignin,
+		setShowSignin,
+		isAuthenticated,
+		setToken,
+	} = useContext(AuthContext);
+
+	const handleLogout = () => {
+		localStorage.removeItem("token");
+		setToken("");
+	};
 
 	const handleAuthForm = () => {
 		setShowSignup(!showSignup);
-	}
+	};
 
 	const handleAuthFormSignIn = () => {
 		setShowSignin(!showSignin);
-	}
+	};
+
+	const notAuthenticated = () => {
+		return !showSignin && !isAuthenticated ? (
+			<button onClick={handleAuthForm}>SignUp</button>
+		) : (
+			<button onClick={handleAuthFormSignIn}>SignIn</button>
+		);
+	};
 
 	const currencyHandler = (event) => {
 		switch (event.target.value) {
@@ -80,9 +100,28 @@ const Navbar = () => {
 						<option value="xau">XAU</option>
 						<option value="xag">XAG</option>
 						<option value="try">TRY</option>
-						<option value="aed">AED</option> 
+						<option value="aed">AED</option>
 					</select>
-					{!showSignin ? <button onClick={handleAuthForm}>SignUp</button> : <button onClick={handleAuthFormSignIn}>SignIn</button>}
+
+					{isAuthenticated ? (
+						<button onClick={handleLogout}>Logout</button>
+					) : (
+						notAuthenticated()
+					)}
+
+					{/* {isAuthenticated && !setShowSignin && !setShowSignup && (
+						
+					)} */}
+
+					{/* {showSignup && !showSignin && !isAuthenticated && (
+						<button onClick={handleAuthForm}>SignUp</button>
+					)}
+					{showSignin && !isAuthenticated && !showSignup && (
+						<button onClick={handleAuthFormSignIn}>SignIn</button>
+					)}
+					{isAuthenticated && !showSignin && !showSignup && (
+						<button onClick={handleLogout}>Logout</button>
+					)} */}
 				</div>
 			</div>
 		</>

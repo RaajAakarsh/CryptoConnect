@@ -46,6 +46,11 @@
     padding: 5px 10px;
     border-radius: 500px;
     cursor: pointer;
+    transition : box-shadow 0.3s;
+}
+
+.portfolio-header form button:hover{
+    box-shadow: 0 0 10px orange;
 }
 
 @media only screen and (max-width: 550px) {

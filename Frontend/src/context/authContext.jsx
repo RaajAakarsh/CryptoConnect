@@ -6,30 +6,29 @@ const AuthContextProvider = (props) => {
 	const [showSignup, setShowSignup] = useState(false);
 	const [showSignin, setShowSignin] = useState(false);
 	const [isAuthenticated, SetisAuthenticated] = useState(false);
+	const [token, setToken] = useState(localStorage.getItem("token") || "");
 
-	// const fetchAllCoin = async() =>{
-	//     const options = {
-	//         method: 'GET',
-	//         headers: {accept: 'application/json', 'x-cg-demo-api-key': COINGECKO_API_KEY}
-	//       };
-
-	//       fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.name}`, options)
-	//         .then(response => response.json())
-	//         .then(response => setAllCoin(response))
-	//         .catch(err => console.error(err));
-	// }
-
-	// useEffect(()=>{
-	//     fetchAllCoin();
-	// },[currency])
+	useEffect(() => {
+		if (localStorage.getItem("token")) {
+		  SetisAuthenticated(true);
+		  setShowSignin(false);
+		  setShowSignup(false);
+		} else {
+		  setShowSignup(true);
+		  setShowSignin(false);
+		  SetisAuthenticated(false);
+		}
+	  }, [token]);
 
 	const contextValue = {
 		showSignup,
 		showSignin,
 		isAuthenticated,
+		token,
 		setShowSignup,
 		setShowSignin,
 		SetisAuthenticated,
+		setToken,
 	};
 
 	return (

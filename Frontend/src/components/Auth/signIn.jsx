@@ -4,14 +4,17 @@ import { useContext, useState } from "react";
 
 const SignIn = () => {
 	const [email, setEmail] = useState("");
-
 	const [password, setPassword] = useState("");
-
 	const [passwordError, setPasswordError] = useState(false);
 	const [successMsg, setSuccessMsg] = useState(false);
 	const [errorMsg, setErrorMsg] = useState("");
-	const { showSignup, setShowSignup, showSignin, setShowSignin } =
-		useContext(AuthContext);
+
+	const {
+		setShowSignup,
+		showSignin,
+		setShowSignin,
+		setToken
+	} = useContext(AuthContext);
 
 	const handleHaveAcc = () => {
 		setShowSignin(false);
@@ -20,41 +23,39 @@ const SignIn = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		if (password !== recheckPassword) {
-			setPasswordError(true);
-			setErrorMsg("Passwords Do Not Match");
-		} else {
-			const formData = {
-				email,
-				password,
-			};
+		const formData = {
+			email,
+			password,
+		};
 
-			fetch(`http://localhost:3000/api/v1/user/signin`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(formData),
+		fetch(`http://localhost:3000/api/v1/user/signin`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(formData),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.message === "User signed in successfully") {
+					const token = data.token; 
+					localStorage.setItem("token", token); 
+					console.log("User signed in successfully!");
+					setSuccessMsg(true);
+					setErrorMsg("User signed in successfully!");
+					setTimeout(() => {
+						setShowSignin(false);
+						setToken(token);
+					}, 3000);
+				} else {
+					console.error("Error signing up:", data.message);
+					setPasswordError(true);
+					setErrorMsg(data.message);
+				}
 			})
-				.then((response) => response.json())
-				.then((data) => {
-					if (data.message === "User successfully created") {
-						console.log("User signed up successfully!");
-						setSuccessMsg(true);
-						setErrorMsg("User signed up successfully!");
-						setTimeout(() => {
-							setShowSignup(!showSignup);
-						}, 5000);
-					} else {
-						console.error("Error signing up:", data.message);
-						setPasswordError(true);
-						setErrorMsg(data.message);
-					}
-				})
-				.catch((error) => {
-					console.error("Error signing up: catch :", error);
-				});
-		}
+			.catch((error) => {
+				console.error("Error signing up: catch :", error);
+			});
 	};
 
 	return (
@@ -92,7 +93,7 @@ const SignIn = () => {
 				<div className="go-to-sign-in">
 					<p>Create a new account!</p>
 					<button className="sign-up-form-have-acc" onClick={handleHaveAcc}>
-						Sign In
+						Sign Up
 					</button>
 				</div>
 			</div>
