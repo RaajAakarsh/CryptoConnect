@@ -11,11 +11,15 @@ app.use(bodyParser.json());
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/watchlist", watchlistRouter);
 
-const PORT = 3000;
-app
-	.listen(PORT, () => {
-		console.log(`Server is running on port ${PORT}`);
-	})
-	.on("error", (err) => {
-		console.error("Error starting server:", err);
-	});
+// const PORT = 3000;
+// app
+// 	.listen(PORT, () => {
+// 		console.log(`Server is running on port ${PORT}`);
+// 	})
+// 	.on("error", (err) => {
+// 		console.error("Error starting server:", err);
+// 	});
+
+module.exports = async (req, res) => {
+	return app(req, res);
+};

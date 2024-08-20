@@ -28,7 +28,8 @@ const SignIn = () => {
 			password,
 		};
 
-		fetch(`http://localhost:3000/api/v1/user/signin`, {
+		// fetch(`http://localhost:3000/api/v1/user/signin`, {
+		fetch(`https://crypto-connect-api.vercel.app/api/v1/user/signin`,{
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
