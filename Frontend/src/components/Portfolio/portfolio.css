@@ -1,76 +1,107 @@
-.portfolio-header{
-    border-radius: 100px;
-    padding: 15px;
-    border: solid rgba(255, 255, 255, 0.2) 1px;
-    backdrop-filter: blur(3px);
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    font-weight: 500;
+.portfolio-table-switch {
+	padding: 10px 30px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
-.portfolio-header p{
-    color: rgba(255, 255, 255, 0.9);
+.portfolio-table-switch button {
+    background: transparent;
+	background-image: linear-gradient(to right, #4E3EFF, #40dfe4, #30dd8a, #269660);
+    background-size: 300% 100%;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.5);
+	padding: 10px 15px;
+	border-radius: 100px;
+	border: none;
+    font-weight: 600;
     font-style: italic;
+    transition: all 0.3s;
 }
 
-.portfolio-header form{
-    height: 35px;
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 500px;
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding-right: 3px;
+.portfolio-table-switch button:hover {
+    background-position: 100% 0; 
+    text-shadow: 0 0 10px white;
 }
 
-.portfolio-header form input{
-    background-color: transparent;
-    flex: 1;
-    font-size: 16px;
-    outline: none;
-    border: none;
-    padding-left: 10px;
+.portfolio-header {
+	margin: 10px 0;
+	border-radius: 100px;
+	padding: 15px;
+	border: solid rgba(255, 255, 255, 0.2) 1px;
+	backdrop-filter: blur(3px);
+	display: flex;
+	justify-content: space-between;
+	font-size: 20px;
+	font-weight: 500;
 }
 
-.portfolio-header form button{
-    background: black;
-    border: solid 2px orange;
-    color: white;
-    font-size: 16px;
-    padding: 5px 10px;
-    border-radius: 500px;
-    cursor: pointer;
-    transition : box-shadow 0.3s;
+.portfolio-header p {
+	color: rgba(255, 255, 255, 0.9);
+	font-style: italic;
 }
 
-.portfolio-header form button:hover{
-    box-shadow: 0 0 10px orange;
+.portfolio-header form {
+	height: 35px;
+	position: absolute;
+	right: 15px;
+	top: 10px;
+	background-color: rgba(255, 255, 255, 0.08);
+	border-radius: 500px;
+	font-size: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	padding-right: 3px;
+}
+
+.portfolio-header form input {
+	background-color: transparent;
+	flex: 1;
+	font-size: 16px;
+	outline: none;
+	border: none;
+	padding-left: 10px;
+}
+
+.portfolio-header form button {
+	background: black;
+	border: solid 2px rgba(255, 166, 0, 0.6);
+	color: white;
+	font-size: 16px;
+	padding: 5px 10px;
+	border-radius: 500px;
+	cursor: pointer;
+	transition: box-shadow 0.3s;
+}
+
+.portfolio-header form button:hover {
+	box-shadow: 0 0 10px orange;
 }
 
 @media only screen and (max-width: 550px) {
-    .portfolio-header{
-        background-color: rgba(255, 255, 255, 0.04);
-        border-radius: 10px;
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        font-size: 15px;
-    }
-    
-    .portfolio-header p{
-        color: rgba(255, 255, 255, 0.9);
-        font-style: italic;
-        margin-bottom: 15px;
-    }
+	.portfolio-header {
+		background-color: rgba(255, 255, 255, 0.04);
+		border-radius: 10px;
+		padding: 15px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		font-size: 15px;
+	}
 
-    .portfolio-header form{
-        position: static;
-    }
+	.portfolio-header p {
+		color: rgba(255, 255, 255, 0.9);
+		font-style: italic;
+		margin-bottom: 15px;
+	}
+
+	.portfolio-header form {
+		position: static;
+	}
+
+	.portfolio-table-switch {
+		padding: 5px;
+	}
 }

@@ -8,7 +8,7 @@ import next from "../../assets/next.png";
 import previous from "../../assets/Previous.png";
 import not_starred from "../../assets/not_starred.png";
 
-const CryptoTable = ({ displayCoin }) => {
+const CryptoTable = ({ displayCoin, showAllCoins }) => {
 	const [startData, setStartData] = useState(0);
 	const [endData, setEndData] = useState(10);
 	const { currency, track, setTrack, watchList } = useContext(CoinContext);
@@ -69,7 +69,7 @@ const CryptoTable = ({ displayCoin }) => {
 
 	return (
 		<>
-			<div className="crypto-table-outer-container">
+			<div style = {showAllCoins && {display : "none"}} className="crypto-table-outer-container">
 				<div className="crypto-table-container">
 					<div
 						className="crypto-table-layout"
