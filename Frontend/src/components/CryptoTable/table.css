@@ -39,14 +39,14 @@
 	color: orange;
 }
 
-.crypto-table-layout-green{
-    color: rgb(0, 255, 102);
-    text-align: center;
+.crypto-table-layout-green {
+	color: rgb(0, 255, 102);
+	text-align: center;
 }
 
-.crypto-table-layout-red{
-    color: rgb(255, 25, 25);
-    text-align: center;
+.crypto-table-layout-red {
+	color: rgb(255, 25, 25);
+	text-align: center;
 }
 .crypto-table-layout #table-col-4 {
 	text-align: center;
@@ -57,14 +57,51 @@
 	margin-right: 0px;
 }
 
-.crypto-table-layout #table-col-8 button{
+.crypto-table-layout #table-col-8 button {
 	background: transparent;
 	border: none;
 	cursor: pointer;
 }
 
-.crypto-table-layout #table-col-8 img{
-	height:25px;
+.crypto-table-layout #table-col-8 img {
+	height: 25px;
+}
+
+.crypto-table-pagination-container {
+	padding: 0 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 15px;
+}
+
+.crypto-table-pagination {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: auto;
+	border: orange solid 2px;
+	padding: 5px 10px;
+	border-radius: 100px;
+}
+
+.crypto-table-pagination p {
+	padding: 0 10px;
+	margin: 0 5px;
+	border-left: solid orange 2px;
+	border-right: solid orange 2px;
+	text-wrap: nowrap;
+	width: auto;
+}
+
+.crypto-table-pagination button {
+	background: transparent;
+	cursor: pointer;
+	border: none;
+}
+
+.crypto-table-pagination button img {
+	height: 25px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -81,10 +118,14 @@
 		font-size: 15px;
 		display: grid;
 	}
-    /* .crypto-table-layout #table-col-5,
-    .crypto-table-layout #table-col-6
-     {
-		display: none;
-        position: absolute;
-	} */
+
+	.crypto-table-pagination-container {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+
+	.crypto-table-pagination {
+		display: flex;
+	}
 }

@@ -4,18 +4,42 @@ import { CoinContext } from "../../context/coinContext";
 import { AuthContext } from "../../context/authContext";
 import watchlist from "../../assets/watchlist.png";
 import starred from "../../assets/starred.png";
+import next from "../../assets/next.png";
+import previous from "../../assets/Previous.png";
 import not_starred from "../../assets/not_starred.png";
 
 const CryptoTable = ({ displayCoin }) => {
-	const { allCoin, currency, track, setTrack, watchList } =
-		useContext(CoinContext);
+	const [startData, setStartData] = useState(0);
+	const [endData, setEndData] = useState(10);
+	const { currency, track, setTrack, watchList } = useContext(CoinContext);
 	const { isAuthenticated, token, setToken } = useContext(AuthContext);
+
+	const handleNext = () => {
+		if (endData === 100) {
+			setStartData(0);
+			setEndData(10);
+		} else {
+			setStartData(startData + 10);
+			setEndData(endData + 10);
+		}
+	};
+
+	const handlePrev = () => {
+		if (startData === 0) {
+			setStartData(90);
+			setEndData(100);
+		} else {
+			setStartData(startData - 10);
+			setEndData(endData - 10);
+		}
+	};
 
 	const handleStarred = (coinId) => {
 		setToken(localStorage.getItem("token"));
 
 		if (token && coinId) {
-			const url = "https://crypto-connect-api.vercel.app/api/v1/watchlist/starred";
+			const url =
+				"https://crypto-connect-api.vercel.app/api/v1/watchlist/starred";
 			const headers = {
 				Authorization: `Bearer ${token}`,
 				"Content-Type": "application/json",
@@ -75,7 +99,7 @@ const CryptoTable = ({ displayCoin }) => {
 						<p id="table-col-7">Market Cap</p>
 					</div>
 					{Array.isArray(displayCoin) ? (
-						displayCoin.slice(0, 10).map((item, index) => (
+						displayCoin.slice(startData, endData).map((item, index) => (
 							<div
 								className="crypto-table-layout"
 								key={index}
@@ -131,6 +155,19 @@ const CryptoTable = ({ displayCoin }) => {
 					) : (
 						<></>
 					)}
+					<div className="crypto-table-pagination-container">
+						<div className="crypto-table-pagination">
+							<button className="pagination-prev" onClick={handlePrev}>
+								<img src={previous} alt="" />
+							</button>
+							<p>
+								{startData} - {endData}
+							</p>
+							<button className="pagination-next" onClick={handleNext}>
+								<img src={next} alt="" />
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</>
