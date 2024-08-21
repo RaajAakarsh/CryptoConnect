@@ -63,3 +63,7 @@ Sign up
 Sign in
 ![Add coins to watchlist](./images/5.png)
 Add coins to watchlist
+
+## Visit the site at
+https://crypto-connect-client.vercel.app/
+For best experience please use Google Chrome!
