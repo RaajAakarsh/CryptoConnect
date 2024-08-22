@@ -1,8 +1,7 @@
 import "./portfolio.css";
 import ParticlesComponent from "../Background/particles";
 import CryptoTable from "../CryptoTable/table";
-import WatchlistTable from "../CryptoTable/watchListTable";
-`2`;
+import WatchlistTable from "../CryptoTable/watchlistTable";
 import React, { useContext, useEffect, useState } from "react";
 import { CoinContext } from "../../context/coinContext";
 import { AuthContext } from "../../context/authContext";
