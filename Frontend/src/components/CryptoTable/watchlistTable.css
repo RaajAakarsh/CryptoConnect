@@ -1,0 +1,130 @@
+.watchlist-crypto-table-container {
+	max-width: 95%;
+	margin: auto;
+	backdrop-filter: blur(5px);
+	border-radius: 15px;
+	margin-top: 10px;
+}
+
+.watchlist-crypto-table-layout {
+	display: grid;
+	padding: 15px 20px;
+	font-weight: 600;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.03);
+	border-bottom: 1px solid #ffffff32;
+	padding-right: 15px;
+	border-radius: 15px;
+}
+
+.watchlist-crypto-table-layout:first-child {
+	background: linear-gradient(rgba(255, 166, 0, 0.5), rgba(255, 0, 0, 0.2));
+}
+.watchlist-crypto-table-layout:last-child {
+	border-bottom: none;
+}
+
+.watchlist-crypto-table-layout div {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.watchlist-crypto-table-layout div img {
+	height: 35px;
+}
+
+.watchlist-crypto-table-layout div p {
+	color: orange;
+}
+
+.watchlist-crypto-table-layout-green {
+	color: rgb(0, 255, 102);
+	text-align: center;
+}
+
+.watchlist-crypto-table-layout-red {
+	color: rgb(255, 25, 25);
+	text-align: center;
+}
+.watchlist-crypto-table-layout #table-col-4 {
+	text-align: center;
+}
+
+.watchlist-crypto-table-layout #table-col-7 {
+	text-align: end;
+	margin-right: 0px;
+}
+
+.watchlist-crypto-table-layout #table-col-8 button {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.watchlist-crypto-table-layout #table-col-8 img {
+	height: 25px;
+}
+
+.watchlist-crypto-table-pagination-container {
+	padding: 0 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 15px;
+}
+
+.watchlist-crypto-table-pagination {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: auto;
+	border: orange solid 2px;
+	padding: 5px 10px;
+	border-radius: 100px;
+}
+
+.watchlist-crypto-table-pagination p {
+	padding: 0 10px;
+	margin: 0 5px;
+	border-left: solid orange 2px;
+	border-right: solid orange 2px;
+	text-wrap: nowrap;
+	width: auto;
+}
+
+.watchlist-crypto-table-pagination button {
+	background: transparent;
+	cursor: pointer;
+	border: none;
+}
+
+.watchlist-crypto-table-pagination button img {
+	height: 25px;
+}
+
+@media only screen and (max-width: 800px) {
+	.watchlist-crypto-table-outer-container {
+		overflow-x: scroll;
+	}
+	.watchlist-crypto-table-container {
+		overflow-x: scroll;
+		max-width: 1000px;
+		height: auto;
+		width: 1000px;
+	}
+	.watchlist-crypto-table-layout {
+		font-size: 15px;
+		display: grid;
+	}
+
+	.watchlist-crypto-table-pagination-container {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+
+	.watchlist-crypto-table-pagination {
+		display: flex;
+	}
+}

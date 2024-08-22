@@ -4,13 +4,13 @@ import { AuthContext } from "./authContext";
 export const CoinContext = createContext();
 const coinApiKey = import.meta.env.COIN_API_KEY;
 
-
 const CoinContextProvider = (props) => {
 	const { token, setToken } = useContext(AuthContext);
 	const [track2, setTrack2] = useState(1);
-    const [track, setTrack] = useState(1);
+	const [track, setTrack] = useState(1);
 	const [allCoin, setAllCoin] = useState([]);
 	const [watchList, setWatchList] = useState([]);
+	const [watchListDisp, setWatchListDisp] = useState([]);
 	const [currency, setCurrency] = useState({
 		name: "usd",
 		symbol: "$",
@@ -67,9 +67,9 @@ const CoinContextProvider = (props) => {
 		}
 	};
 
-	useEffect(()=>{
-	    fetchAllCoin();
-	},[currency, track2])
+	useEffect(() => {
+		fetchAllCoin();
+	}, [currency, track2]);
 
 	useEffect(() => {
 		getWatchlistCoins();
@@ -79,10 +79,15 @@ const CoinContextProvider = (props) => {
 		allCoin,
 		currency,
 		setCurrency,
-        watchList,
-        track,
-        setTrack
+		watchListDisp,
+		watchList,
+		track,
+		setTrack,
 	};
+
+	useEffect(() => {
+		setWatchListDisp(allCoin.filter((coin) => watchList.includes(coin.id)));
+	}, [allCoin, watchList]);
 
 	return (
 		<CoinContext.Provider value={contextValue}>

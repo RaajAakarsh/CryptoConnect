@@ -13,7 +13,7 @@ const Portfolio = () => {
 		[]
 	);
 
-	const { allCoin, currency } = useContext(CoinContext);
+	const { allCoin, currency, watchListDisp } = useContext(CoinContext);
 	const { isAuthenticated } = useContext(AuthContext);
 	const [displayCoin, setDisplayCoin] = useState([]);
 	const [showAllCoins, setShowAllCoins] = useState(true);
@@ -85,14 +85,9 @@ const Portfolio = () => {
 					</div>
 				)}
 
-				<CryptoTable
-					displayCoin={displayCoin}
-					displayComponent={showAllCoins}
-				/>
-				<WatchlistTable
-					displayCoin={displayCoin}
-					displayComponent={showAllCoins}
-				/>
+				{showAllCoins && <CryptoTable displayCoin={displayCoin} />}
+
+				{!showAllCoins && <WatchlistTable displayCoin={watchListDisp} />}
 			</div>
 			{particless}
 		</>
