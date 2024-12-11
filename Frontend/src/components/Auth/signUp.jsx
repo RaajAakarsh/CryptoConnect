@@ -11,6 +11,7 @@ const SignUp = () => {
 	const [passwordError, setPasswordError] = useState(false);
 	const [successMsg, setSuccessMsg] = useState(false);
 	const [errorMsg, setErrorMsg] = useState("");
+	const [loading, setLoading] = useState(false);
 	const { showSignup, setShowSignup, showSignin, setShowSignin } =
 		useContext(AuthContext);
 
@@ -20,11 +21,12 @@ const SignUp = () => {
 	};
 
 	const handleSubmit = (event) => {
+		setLoading(true);
 		event.preventDefault();
 		if (password.length < 8 || recheckPassword.length < 8) {
 			setPasswordError(true);
 			setErrorMsg("Password must be atleast 8 characters");
-		}else if (password !== recheckPassword) {
+		} else if (password !== recheckPassword) {
 			setPasswordError(true);
 			setErrorMsg("Passwords Do Not Match");
 		} else {
@@ -50,11 +52,13 @@ const SignUp = () => {
 						setErrorMsg("User signed up successfully!");
 						setTimeout(() => {
 							setShowSignup(!showSignup);
-						}, 5000);
+						}, 5000);	
+						setLoading(false);
 					} else {
 						console.error("Error signing up:", data.message);
 						setPasswordError(true);
 						setErrorMsg(data.message);
+						setLoading(false);
 					}
 				})
 				.catch((error) => {
@@ -122,7 +126,7 @@ const SignUp = () => {
 					)}
 					{successMsg && <p style={{ color: "green" }}>{errorMsg}</p>}
 
-					<button type="submit">Sign Up</button>
+					<button type="submit">{loading ? "Loading..." : "Sign Up"}</button>
 				</form>
 
 				<div className="go-to-sign-in">

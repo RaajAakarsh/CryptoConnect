@@ -6,11 +6,12 @@ import Footer from "../components/Footer/footer";
 import SignUp from "../components/Auth/signUp";
 import SignIn from "../components/Auth/signIn";
 import { AuthContext } from "../context/authContext";
+import Chatbot from "../components/Chat/Chatbot";
+import ChatButton from "../components/Chat/ChatButton";
 
 const AppRouter = () => {
 	const { showSignup, showSignin } = useContext(AuthContext);
 	console.log("Developed by Aakarsh Raaj - 22CE10001");
-
 
 	return (
 		<React.StrictMode>
@@ -18,9 +19,11 @@ const AppRouter = () => {
 				{showSignup ? <SignUp /> : <></>}
 				{showSignin ? <SignIn /> : <></>}
 				<Navbar />
+				<Chatbot />
 				<Routes>
 					<Route path="/" element={<Portfolio />} />
 				</Routes>
+				<ChatButton />
 				<Footer />
 			</Router>
 		</React.StrictMode>

@@ -8,13 +8,10 @@ const SignIn = () => {
 	const [passwordError, setPasswordError] = useState(false);
 	const [successMsg, setSuccessMsg] = useState(false);
 	const [errorMsg, setErrorMsg] = useState("");
+	const [loading, setLoading] = useState(false);
 
-	const {
-		setShowSignup,
-		showSignin,
-		setShowSignin,
-		setToken
-	} = useContext(AuthContext);
+	const { setShowSignup, showSignin, setShowSignin, setToken } =
+		useContext(AuthContext);
 
 	const handleHaveAcc = () => {
 		setShowSignin(false);
@@ -22,13 +19,14 @@ const SignIn = () => {
 	};
 
 	const handleSubmit = (event) => {
+		setLoading(true);
 		event.preventDefault();
 		const formData = {
 			email,
 			password,
 		};
 
-		fetch(`https://crypto-connect-api.vercel.app/api/v1/user/signin`,{
+		fetch(`https://crypto-connect-api.vercel.app/api/v1/user/signin`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -38,8 +36,8 @@ const SignIn = () => {
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.message === "User signed in successfully") {
-					const token = data.token; 
-					localStorage.setItem("token", token); 
+					const token = data.token;
+					localStorage.setItem("token", token);
 					console.log("User signed in successfully!");
 					setSuccessMsg(true);
 					setErrorMsg("User signed in successfully!");
@@ -47,10 +45,12 @@ const SignIn = () => {
 						setShowSignin(false);
 						setToken(token);
 					}, 3000);
+					setLoading(false);
 				} else {
 					console.error("Error signing up:", data.message);
 					setPasswordError(true);
 					setErrorMsg(data.message);
+					setLoading(false);
 				}
 			})
 			.catch((error) => {
@@ -88,7 +88,7 @@ const SignIn = () => {
 					)}
 					{successMsg && <p style={{ color: "green" }}>{errorMsg}</p>}
 
-					<button type="submit">Sign In</button>
+					<button type="submit">{loading ? "Loading..." : "Sign In"}</button>
 				</form>
 				<div className="go-to-sign-in">
 					<p>Create a new account!</p>

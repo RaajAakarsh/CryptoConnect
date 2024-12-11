@@ -7,18 +7,19 @@ const AuthContextProvider = (props) => {
 	const [showSignin, setShowSignin] = useState(false);
 	const [isAuthenticated, SetisAuthenticated] = useState(false);
 	const [token, setToken] = useState(localStorage.getItem("token") || "");
+	const [user, setUser] = useState("");
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
-		  SetisAuthenticated(true);
-		  setShowSignin(false);
-		  setShowSignup(false);
+			SetisAuthenticated(true);
+			setShowSignin(false);
+			setShowSignup(false);
 		} else {
-		  setShowSignup(true);
-		  setShowSignin(false);
-		  SetisAuthenticated(false);
+			setShowSignup(false);
+			setShowSignin(false);
+			SetisAuthenticated(false);
 		}
-	  }, [token]);
+	}, [token]);
 
 	const contextValue = {
 		showSignup,
@@ -29,6 +30,8 @@ const AuthContextProvider = (props) => {
 		setShowSignin,
 		SetisAuthenticated,
 		setToken,
+		setUser, 
+		user
 	};
 
 	return (

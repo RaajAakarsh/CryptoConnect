@@ -1,0 +1,15 @@
+.chat-button-outer-container img{
+    height: 50px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 25;
+    border: solid white 2px;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.chat-button-outer-container img:hover{
+    transform: rotateZ(360deg);
+    box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.284);
+}

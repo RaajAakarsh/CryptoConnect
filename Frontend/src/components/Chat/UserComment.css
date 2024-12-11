@@ -1,0 +1,17 @@
+.user-comment-outercontainer
+{
+    display: flex;
+    justify-content: end;
+}
+.user-comment-message{
+    height: auto;
+    background-color: rgb(255, 191, 73);
+    padding: 10px;
+    border-radius: 15px;
+    border-bottom-right-radius: 0;
+    max-width: 80%;
+    color: black;
+    font-weight: 500;
+    text-align: justify;
+    margin-bottom: 15px;
+}

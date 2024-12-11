@@ -1,0 +1,126 @@
+.chatbot-upper {
+	height: 510px;
+	overflow-y: scroll;
+	border: solid rgba(255, 255, 255, 0.386) 2px;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+.chatbot-upper::-webkit-scrollbar {
+	display: none;
+}
+
+.chatbot-outer-container {
+	height: 85%;
+	width: 340px;
+	background: linear-gradient(135deg, rgb(255, 166, 0), black);
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	scrollbar-width: 0px;
+	position: fixed;
+	left: 50px;
+	border-radius: 15px;
+	z-index: 20;
+	overflow-x: hidden;
+	padding: 15px;
+	padding-bottom: 50px;
+}
+
+.chatbot-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 75px;
+	padding-bottom: 25px;
+}
+
+.chatbot-image-border {
+	height: 150px;
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	border-radius: 50%;
+	padding: 25px;
+	background: white;
+}
+
+.chatbot-image img {
+	position: relative;
+	z-index: 20;
+	height: 125px;
+	box-sizing: border-box;
+}
+
+.chatbot-outer-container::-webkit-scrollbar {
+	display: none;
+}
+
+.chatbot-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 35px;
+}
+.chatbot-header #name {
+	font-size: 30px;
+	font-weight: 900;
+	font-style: italic;
+}
+
+.chatbot-header #query {
+	font-weight: 600;
+	font-style: italic;
+}
+
+.chatbot-messages {
+	width: 100%;
+}
+
+.chatbot-input textarea {
+	position: absolute;
+	resize: none;
+	width: 90%;
+	bottom: 20px;
+	left: 15px;
+	padding: 10px;
+	border-radius: 12px;
+	border: solid black 2px;
+	background: transparent;
+	overflow-y: scroll;
+	line-height: 18px;
+	height: 40px;
+	padding-right: 40px;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+
+.chatbot-input textarea::-webkit-scrollbar {
+	display: none;
+}
+
+.chatbot-input textarea:focus {
+	outline: none;
+	border: solid 2px white;
+}
+
+.chatbot-input img {
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	height: 25px;
+	rotate: -45deg;
+}
+
+@media (max-width: 768px) {
+	.chatbot-outer-container {
+		left: 15px;
+	}
+
+	.chatbot-upper {
+		height: 480px;
+	}
+}

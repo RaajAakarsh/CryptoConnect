@@ -41,3 +41,5 @@ app.get("/", (req, res) => {
 module.exports = async (req, res) => {
 	return await app(req, res);
 };
+
+console.log("Index file running");

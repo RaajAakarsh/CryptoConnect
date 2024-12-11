@@ -87,6 +87,8 @@ const Portfolio = () => {
 				{showAllCoins && <CryptoTable displayCoin={displayCoin} />}
 
 				{!showAllCoins && <WatchlistTable displayCoin={watchListDisp} />}
+
+				
 			</div>
 			{particless}
 		</>
