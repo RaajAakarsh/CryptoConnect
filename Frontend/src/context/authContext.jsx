@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
 export const AuthContext = createContext();
 
@@ -8,6 +9,7 @@ const AuthContextProvider = (props) => {
 	const [isAuthenticated, SetisAuthenticated] = useState(false);
 	const [token, setToken] = useState(localStorage.getItem("token") || "");
 	const [user, setUser] = useState("");
+	const [chat, setChat] = useState(false);
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
@@ -18,6 +20,17 @@ const AuthContextProvider = (props) => {
 			setShowSignup(false);
 			setShowSignin(false);
 			SetisAuthenticated(false);
+		}
+
+		if (token && typeof token === "string" && token !== "") {
+			try {
+				const decodedToken = jwtDecode(token);
+				if (decodedToken) {
+					setUser(decodedToken.name);
+				}
+			} catch (error) {
+				console.error("Failed to decode token:", error);
+			}
 		}
 	}, [token]);
 
@@ -30,8 +43,10 @@ const AuthContextProvider = (props) => {
 		setShowSignin,
 		SetisAuthenticated,
 		setToken,
-		setUser, 
-		user
+		setUser,
+		user,
+		chat,
+		setChat,
 	};
 
 	return (

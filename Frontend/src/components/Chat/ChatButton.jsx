@@ -1,11 +1,17 @@
 import "./ChatButton.css";
-import Chatbot from "./Chatbot";
 import chatButton from "./../../assets/chatbot1.png";
+import { AuthContext } from "../../context/authContext";
+import { useContext } from "react";
 
 const ChatButton = () => {
+	const {setChat, chat} = useContext(AuthContext);
+
+	const handleClick = () => {
+		setChat(!chat);
+	};
 	return (
 		<div className="chat-button-outer-container">
-			<img src={chatButton} alt="chat" />
+			<img src={chatButton} alt="chat" onClick={handleClick} />
 		</div>
 	);
 };

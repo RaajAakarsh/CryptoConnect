@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/authContext";
 
 const Chatbot = () => {
 	const textarea = document.querySelector(".chatbot-input textarea");
-	const { isAuthenticated, user } = useContext(AuthContext);
+	const { isAuthenticated, user, chat } = useContext(AuthContext);
 	const maxLines = 7;
 	const minHeight = 40;
 	const lineHeight = 18;
@@ -43,45 +43,47 @@ const Chatbot = () => {
 	const display2 = <div></div>;
 
 	return (
-		<div className="chatbot-outer-container">
-			<div className="chatbot-upper">
-				<div className="chatbot-image">
-					<div className="chatbot-image-border">
-						<img src={chatbot} alt="CryptoBot" />
+		chat && (
+			<div className="chatbot-outer-container">
+				<div className="chatbot-upper">
+					<div className="chatbot-image">
+						<div className="chatbot-image-border">
+							<img src={chatbot} alt="CryptoBot" />
+						</div>
 					</div>
+					{isAuthenticated ? (
+						<div className="chatbot-header">
+							<span id="name">Hi {user}!</span>
+							<span id="query">How can I help you today?</span>
+						</div>
+					) : (
+						display2
+					)}
+					{isAuthenticated ? (
+						<div className="chatbot-messages">
+							<UserComment />
+							<BotComment />
+							<UserComment />
+							<BotComment />
+						</div>
+					) : (
+						display1
+					)}
 				</div>
 				{isAuthenticated ? (
-					<div className="chatbot-header">
-						<span id="name">Hi {user}!</span>
-						<span id="query">How can I help you today?</span>
+					<div className="chatbot-input">
+						<textarea
+							type="text"
+							placeholder="Message CryptoBot"
+							onChange={handleinput}
+						/>
+						<img src={send} alt="send" />
 					</div>
 				) : (
 					display2
 				)}
-				{isAuthenticated ? (
-					<div className="chatbot-messages">
-						<UserComment />
-						<BotComment />
-						<UserComment />
-						<BotComment />
-					</div>
-				) : (
-					display1
-				)}
 			</div>
-			{isAuthenticated ? (
-				<div className="chatbot-input">
-					<textarea
-						type="text"
-						placeholder="Message CryptoBot"
-						onChange={handleinput}
-					/>
-					<img src={send} alt="send" />
-				</div>
-			) : (
-				display2
-			)}
-		</div>
+		)
 	);
 };
 
