@@ -3,6 +3,7 @@ import chatbot from "./../../assets/chatbot.png";
 import send from "./../../assets/send.png";
 import UserComment from "./UserComment";
 import BotComment from "./BotComment";
+import LoaderComment from "./LoaderComment";
 import { useContext, useState, useRef } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useChat } from "./useChat";
@@ -10,6 +11,7 @@ import { useEffect } from "react";
 
 const Chatbot = () => {
 	const { chatHistory, setChatHistory } = useChat();
+	const [isLoading, setIsLoading] = useState(false);
 	const textareaRef = useRef(null);
 	const chatMessagesEndRef = useRef(null);
 	const { isAuthenticated, user, chat } = useContext(AuthContext);
@@ -49,6 +51,7 @@ const Chatbot = () => {
 	};
 
 	const handleSubmit = async (e) => {
+		setIsLoading(true);
 		e.preventDefault();
 		setChatHistory((prevHistory) => [...prevHistory, userInput]);
 		const data = { prompt: userInput, chatHistory };
@@ -66,6 +69,7 @@ const Chatbot = () => {
 				}
 			);
 			if (response.ok) {
+				setIsLoading(false);
 				const result = await response.json();
 				const botReply = result.response;
 				setChatHistory((prevHistory) => [...prevHistory, botReply]);
@@ -122,6 +126,7 @@ const Chatbot = () => {
 									<BotComment key={index} message={message} />
 								)
 							)}
+							{isLoading && <LoaderComment />}
 							<div ref={chatMessagesEndRef} />
 						</div>
 					) : (
