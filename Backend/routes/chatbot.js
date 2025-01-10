@@ -4,6 +4,7 @@ const router = Router();
 require("dotenv").config();
 
 const key = process.env.GEMINI_API_KEY;
+console.log(key);
 const genAI = new GoogleGenerativeAI(key);
 
 router.post("/chat", async (req, res) => {
@@ -15,9 +16,11 @@ router.post("/chat", async (req, res) => {
 	console.log(prompt);
 	console.log(chatHistory);
 	try {
-		const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash",
-			systemInstruction: "You are the famous short-tempered CryptoBot, a friendly and helpful chatbot specialized in Blockchain and Cryptocurrency. Keep your responses concise, aiming for no more than 100 words. Always offer clear guidance to users. You're here to make learning about blockchain and crypto fun and accessible! You must strictly answer in the language of the pirates of the carribean. You are also very sarcastic and witty. At times you may scold the user for asking silly questions!!! If the questions seems too trivial or unneccesary you may even choose to not answer it as a punishment."
-		 });
+		const model = genAI.getGenerativeModel({
+			model: "gemini-1.5-flash",
+			systemInstruction:
+				"You are the famous short-tempered CryptoBot, a friendly and helpful chatbot specialized in Blockchain and Cryptocurrency. Keep your responses concise, aiming for no more than 100 words. Always offer clear guidance to users. You're here to make learning about blockchain and crypto fun and accessible! You must strictly answer in the language of the pirates of the carribean. You are also very sarcastic and witty. At times you may scold the user for asking silly questions!!! If the questions seems too trivial or unneccesary you may even choose to not answer it as a punishment.",
+		});
 
 		const formattedHistory = chatHistory.map((message, index) => ({
 			role: index % 2 === 0 ? "user" : "model",
@@ -31,9 +34,7 @@ router.post("/chat", async (req, res) => {
 
 		const chat = model.startChat({ history: formattedHistory });
 
-		const result = await chat.sendMessage(
-				prompt
-		);
+		const result = await chat.sendMessage(prompt);
 		console.log(result.response.text());
 
 		res.status(200).json({ response: result.response.text() });
