@@ -144,7 +144,7 @@ const Chatbot = () => {
 								onChange={handleinput}
 								onKeyDown={handleKeyDown}
 							/>
-							<button type="submit">
+							<button type="submit" style={{border:"none"}}>
 								<img src={send} alt="send" />
 							</button>
 						</div>
