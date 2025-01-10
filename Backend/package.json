@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.23.3",
+    "@google/generative-ai": "^0.21.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",

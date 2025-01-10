@@ -25,6 +25,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const userRouter = require("./routes/user");
 const watchlistRouter = require("./routes/watchlist");
+const chatbotRouter = require("./routes/chatbot")
 
 const app = express();
 
@@ -33,9 +34,14 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/watchlist", watchlistRouter);
+app.use("/api/v1/chatbot", chatbotRouter);
 
 app.get("/", (req, res) => {
 	res.json("Hello");
+});
+
+app.listen(3000, () => {
+    console.log(`Server running on port 3000`);
 });
 
 module.exports = async (req, res) => {

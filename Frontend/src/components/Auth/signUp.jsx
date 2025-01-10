@@ -12,7 +12,7 @@ const SignUp = () => {
 	const [successMsg, setSuccessMsg] = useState(false);
 	const [errorMsg, setErrorMsg] = useState("");
 	const [loading, setLoading] = useState(false);
-	const { showSignup, setShowSignup, showSignin, setShowSignin } =
+	const { showSignup, setShowSignup, showSignin, setShowSignin, setToken } =
 		useContext(AuthContext);
 
 	const handleHaveAcc = () => {
@@ -36,8 +36,8 @@ const SignUp = () => {
 				password,
 				city,
 			};
-
-			fetch(`https://crypto-connect-api.vercel.app/api/v1/user/signup`, {
+			// https://crypto-connect-api.vercel.app/api/v1/user/signup
+			fetch(`http://localhost:3000/api/v1/user/signup`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -47,12 +47,16 @@ const SignUp = () => {
 				.then((response) => response.json())
 				.then((data) => {
 					if (data.message === "User successfully created") {
+						const token = data.token;
+						localStorage.setItem("token", token);
 						console.log("User signed up successfully!");
 						setSuccessMsg(true);
 						setErrorMsg("User signed up successfully!");
 						setTimeout(() => {
 							setShowSignup(!showSignup);
-						}, 5000);	
+							setShowSignin(false);
+							setToken(token);
+						}, 3000);
 						setLoading(false);
 					} else {
 						console.error("Error signing up:", data.message);
