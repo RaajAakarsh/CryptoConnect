@@ -59,7 +59,7 @@ const Chatbot = () => {
 		try {
 			console.log("sending to backend");
 			const response = await fetch(
-				"http://localhost:3000/api/v1/chatbot/chat",
+				"https://crypto-connect-api.vercel.app/api/v1/chatbot/chat",
 				{
 					method: "POST",
 					headers: {

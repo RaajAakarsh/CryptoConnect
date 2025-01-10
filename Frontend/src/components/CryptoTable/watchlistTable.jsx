@@ -58,7 +58,6 @@ const WatchlistTable = ({ displayCoin }) => {
 					}
 				})
 				.then((updatedUser) => {
-					// console.log(updatedUser);
 					setTrack(track + 1);
 				})
 				.catch((error) => {
