@@ -23,7 +23,6 @@ const watchlist_schema = zod.object({
 });
 
 router.post("/signup", async (req, res) => {
-	console.log("signup detected");
 	const request = req.body;
 	const result = signup_schema.safeParse(request);
 
@@ -61,7 +60,6 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/signin", async (req, res) => {
-	console.log("signin detected");
 	const request = req.body;
 	const result = signin_schema.safeParse(request);
 

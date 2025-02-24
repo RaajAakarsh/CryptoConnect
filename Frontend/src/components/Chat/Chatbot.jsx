@@ -57,7 +57,6 @@ const Chatbot = () => {
 		const data = { prompt: userInput, chatHistory };
 		setUserInput("");
 		try {
-			console.log("sending to backend");
 			const response = await fetch(
 				"https://crypto-connect-api.vercel.app/api/v1/chatbot/chat",
 				{

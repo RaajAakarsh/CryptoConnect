@@ -11,7 +11,7 @@ import ChatButton from "../components/Chat/ChatButton";
 
 const AppRouter = () => {
 	const { showSignup, showSignin } = useContext(AuthContext);
-	console.log("Developed by Aakarsh Raaj - 22CE10001");
+	console.log("Developed by AR");
 
 	return (
 		<React.StrictMode>

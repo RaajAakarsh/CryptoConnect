@@ -4,17 +4,13 @@ const router = Router();
 require("dotenv").config();
 
 const key = process.env.GEMINI_API_KEY;
-console.log(key);
 const genAI = new GoogleGenerativeAI(key);
 
 router.post("/chat", async (req, res) => {
-	console.log("chatbot detected");
 	const { prompt, chatHistory } = req.body;
 	if (!prompt) {
 		return res.status(400).json({ error: "Prompt is required" });
 	}
-	console.log(prompt);
-	console.log(chatHistory);
 	try {
 		const model = genAI.getGenerativeModel({
 			model: "gemini-1.5-flash",
@@ -27,15 +23,9 @@ router.post("/chat", async (req, res) => {
 			parts: [{ text: message }],
 		}));
 
-		console.log(
-			"Formatted History:",
-			JSON.stringify(formattedHistory, null, 2)
-		);
-
 		const chat = model.startChat({ history: formattedHistory });
 
 		const result = await chat.sendMessage(prompt);
-		console.log(result.response.text());
 
 		res.status(200).json({ response: result.response.text() });
 	} catch (error) {

@@ -33,7 +33,6 @@ router.get("/", async (req, res) => {
 });
 
 router.patch("/starred", async (req, res) => {
-	console.log("patch detected");
 	const request = req.body;
 	const result = watchlist_schema.safeParse(request);
 

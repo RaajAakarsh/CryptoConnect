@@ -58,7 +58,6 @@ const CoinContextProvider = (props) => {
 					}
 				})
 				.then((watchlistCoins) => {
-					console.log("Watchlist fetched successfully");
 					setWatchList(watchlistCoins);
 				})
 				.catch((error) => {

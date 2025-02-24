@@ -49,7 +49,6 @@ const SignUp = () => {
 					if (data.message === "User successfully created") {
 						const token = data.token;
 						localStorage.setItem("token", token);
-						console.log("User signed up successfully!");
 						setSuccessMsg(true);
 						setErrorMsg("User signed up successfully!");
 						setTimeout(() => {

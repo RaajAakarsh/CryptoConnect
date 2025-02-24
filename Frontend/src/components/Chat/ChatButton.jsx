@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/authContext";
 import { useContext } from "react";
 
 const ChatButton = () => {
-	const {setChat, chat} = useContext(AuthContext);
+	const { setChat, chat } = useContext(AuthContext);
 
 	const handleClick = () => {
 		setChat(!chat);

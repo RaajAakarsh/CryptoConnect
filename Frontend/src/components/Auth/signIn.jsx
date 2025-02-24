@@ -39,7 +39,6 @@ const SignIn = () => {
 				if (data.message === "User signed in successfully") {
 					const token = data.token;
 					localStorage.setItem("token", token);
-					console.log("User signed in successfully!");
 					setSuccessMsg(true);
 					setErrorMsg("User signed in successfully!");
 					setTimeout(() => {
